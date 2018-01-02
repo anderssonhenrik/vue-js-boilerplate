@@ -12,10 +12,10 @@ app.use(bodyParser.json()) // Add easy parse of json on server
 app.use(cors()) // Add cors support
 
 // First basic endpoint
-app.get('/status', (req, res) => {
+app.post('/register', (req, res) => {
   res.send({
-    message: 'hello world!'}
-  )
+    message: `Hi ${req.body.email}, your user was registered.`
+  })
 })
 
 app.listen(process.env.PORT || 8081)
