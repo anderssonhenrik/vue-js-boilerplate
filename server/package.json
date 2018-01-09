@@ -7,14 +7,22 @@
     "start": "./node_modules/nodemon/bin/nodemon.js src/app --exec 'npm run lint && node'",
     "lint": "./node_modules/.bin/eslint **/*.js"
   },
+  "quokka": {
+    "babel": true
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "morgan": "^1.9.0"
+    "joi": "^13.1.0",
+    "jsonwebtoken": "^8.1.0",
+    "morgan": "^1.9.0",
+    "sequelize": "^4.28.6",
+    "sqlite3": "^3.1.13"
   },
   "devDependencies": {
     "eslint-config-standard": "^11.0.0-beta.0",

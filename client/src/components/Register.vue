@@ -1,47 +1,76 @@
 <template>
-  <div class="register">
-    <h1>Register</h1>
+  <v-layout column>
+    <v-flex xs6 offset-xs3>
+      <div class="white elevation-2">
+        <v-toolbar flat dense dark class="cyan">
+          <v-toolbar-title>Register</v-toolbar-title>
+        </v-toolbar>
 
-    <input
-      type="email"
-      name="email"
-      v-model="email"
-      placeholder="Email" />
-    <br />
+        <div class="pl-4 pr-4 pt-2 pb-2">
 
-    <input
-      type="password"
-      name="password"
-      v-model="password"
-      placeholder="Password" />
-    <br />
+          <form
+            name="some-form"
+            autocomplete="off">
 
-    <button
-      @click="register">
-      Register
-    </button>
+            <v-text-field
+                name="email"
+                label="Email"
+                v-model="email"></v-text-field>
+            <br />
 
-  </div>
+            <v-text-field
+                name="password"
+                label="Password"
+                type="password"
+                v-model="password"
+                autocomplete="new-password">
+            </v-text-field>
+            <br />
+
+            <div class="error" v-html="error"></div>
+            <br />
+
+            <v-btn
+              dark
+              class="cyan"
+              @click="register">
+              Register
+            </v-btn>
+
+          </form>
+
+        </div>
+
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Register',
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: null
     }
   },
   methods: {
     async register () {
-      const response = await AuthenticationService.register({
-        email: this.email,
-        password: this.password
-      })
-      console.log(response.data)
+      try {
+        const response = await AuthenticationService.register({
+          email: this.email,
+          password: this.password
+        })
+        // Update store with token and user
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
+      } catch (error) {
+        this.error = error.response.data.error
+      }
     }
   }
 }
@@ -49,5 +78,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .error { color: red; }
 </style>
