@@ -5,7 +5,7 @@ const config = require('../config/config')
 // Function for signign a user object, using the jwt library to get a jsonwebtoken
 function jwtSignUser(user) {
   const oneWeek = 60 * 60 * 24 * 7;
-  const secret = config.authentication.jwsSecret
+  const secret = config.authentication.jwtSecret
   const options = { expiresIn: oneWeek }
   return jwt.sign(user, secret, options)
 }

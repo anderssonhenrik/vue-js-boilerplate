@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Enter Sandman",
+    "artist": "Metallica",
+    "genre": "Metal",
+    "album": "Metallica",
+    "albumImageUrl": "https://img.discogs.com/ps4n2WeCrW6ptvq1azgnOgKgjxQ=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-4319735-1485049250-1235.jpeg.jpg",
+    "youtubeId": "CD-E-LDc384",
+    "lyrics": "Lyrics",
+    "tab": "Tab here..."
+  },
+  {
+    "title": "Californication",
+    "artist": "Red Hot Chili Peppers",
+    "genre": "Rock",
+    "album": "Californication",
+    "albumImageUrl": "http://cdn26.us1.fansshare.com/photo/redhotchilipeppers/red-hot-chili-peppers-californication-frontal-album-376151705.jpg",
+    "youtubeId": "YlUKcNNmywk",
+    "lyrics": "Lyrics",
+    "tab": "Tab here..."
+  }
+]

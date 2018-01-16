@@ -4,32 +4,61 @@
     fixed
     class="cyan">
     <v-toolbar-title class="mr-4">
-      <router-link to="/">Page Title</router-link>
+      <router-link
+        to="/songs"
+        tag="span">
+        Page Title
+      </router-link>
     </v-toolbar-title>
 
-    <!-- <v-toolbar-items>
-      <v-btn flat dark>Browse</v-btn>
-    </v-toolbar-items> -->
+    <v-toolbar-items>
+      <v-btn
+        flat
+        dark
+        to="/songs">
+        Browse
+      </v-btn>
+    </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <button
+      <v-btn
+        flat
+        dark
         v-if="!$store.state.isUserLoggedIn"
-        class="btn btn--flat theme--dark">
-        <router-link to="/register">Sign up</router-link>
-      </button>
-      <button
+        to="/register">
+        Sign up
+      </v-btn>
+      <v-btn
+        flat
+        dark
         v-if="!$store.state.isUserLoggedIn"
-        class="btn btn--flat theme--dark">
-        <router-link to="/login">Login</router-link>
-      </button>
+        to="/login">
+        Login
+      </v-btn>
+      <v-btn
+        flat
+        dark
+        v-if="$store.state.isUserLoggedIn"
+        @click="logout">
+        Log out
+      </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
 export default {
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+      this.$router.push({
+        name: 'songs'
+      })
+    }
+  }
 }
 </script>
 

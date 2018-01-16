@@ -1,3 +1,5 @@
+const Path = require('path')
+
 module.exports = {
   port: process.env.PORT || 8081,
   db: {
@@ -7,10 +9,10 @@ module.exports = {
     options: {
       host: process.env.DB_HOST || 'localhost',
       dialect: 'sqlite', // Specify what database type sequelize should connect to
-      storage: './vuejsboilerplate.sqlite'
+      storage: Path.resolve(__dirname, '../../vuejsboilerplate.sqlite')
     }
   },
   authentication: {
-    jwsSecret: process.env.JWS_SECRET || 'secret'
+    jwtSecret: process.env.JWS_SECRET || 'secret'
   }
 }

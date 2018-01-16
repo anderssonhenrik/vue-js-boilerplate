@@ -11,6 +11,8 @@ app.use(morgan('combined')) // Add console logging on requests to endpoints on s
 app.use(bodyParser.json()) // Add easy parse of json on server
 app.use(cors()) // Add cors support
 
+require('./passport')
+
 // Require routes module (routes.js) with all our routes defined,
 // and pass app to be used in routs module
 require('./routes')(app)

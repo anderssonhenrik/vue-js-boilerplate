@@ -1,47 +1,38 @@
 <template>
   <v-layout column>
     <v-flex xs6 offset-xs3>
-      <div class="white elevation-2">
-        <v-toolbar flat dense dark class="cyan">
-          <v-toolbar-title>Register</v-toolbar-title>
-        </v-toolbar>
+      <panel title="Register">
+        <form
+          name="some-form"
+          autocomplete="off">
 
-        <div class="pl-4 pr-4 pt-2 pb-2">
+          <v-text-field
+              name="email"
+              label="Email"
+              v-model="email"></v-text-field>
+          <br />
 
-          <form
-            name="some-form"
-            autocomplete="off">
+          <v-text-field
+              name="password"
+              label="Password"
+              type="password"
+              v-model="password"
+              autocomplete="new-password">
+          </v-text-field>
+          <br />
 
-            <v-text-field
-                name="email"
-                label="Email"
-                v-model="email"></v-text-field>
-            <br />
+          <div class="danger-alert" v-html="error"></div>
+          <br />
 
-            <v-text-field
-                name="password"
-                label="Password"
-                type="password"
-                v-model="password"
-                autocomplete="new-password">
-            </v-text-field>
-            <br />
+          <v-btn
+            dark
+            class="cyan"
+            @click="register">
+            Register
+          </v-btn>
 
-            <div class="error" v-html="error"></div>
-            <br />
-
-            <v-btn
-              dark
-              class="cyan"
-              @click="register">
-              Register
-            </v-btn>
-
-          </form>
-
-        </div>
-
-      </div>
+        </form>
+      </panel>
     </v-flex>
   </v-layout>
 </template>
@@ -68,6 +59,7 @@ export default {
         // Update store with token and user
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push('/songs')
       } catch (error) {
         this.error = error.response.data.error
       }

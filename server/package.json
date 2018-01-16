@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js src/app --exec 'npm run lint && node'",
-    "lint": "./node_modules/.bin/eslint **/*.js"
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "seed": "node ./seed"
   },
   "quokka": {
     "babel": true
@@ -21,6 +22,8 @@
     "joi": "^13.1.0",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1",
     "sequelize": "^4.28.6",
     "sqlite3": "^3.1.13"
   },
